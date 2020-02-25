@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<div th:include="~{include/base_fragments::cssfragement}"></div>
+<!-- <div th:insert="~{include/base_fragments :: #jsfragement}"></div> -->
+<!-- <div th:replace=""></div>
+<div th:insert=""></div> -->
+</head>
+<body>
+	<div th:if="${session.merber}!=null">
+		<table calss="table" border="3%" Height="300" Width="1000" align="center">
+		<tr>
+			<th>编号</th>
+			<th>ID</th>
+			<th>姓名</th>
+			<th>密码</th>
+			<th>账户</th>
+			<th>邮箱</th>
+		</tr>
+		<tr th:each="emp,m:${session.merber}">
+			<td th:text="${m.count}">1</td>
+			<td th:text="${emp.id}">1</td>
+			<td th:text="${emp.loginacct}">2</td>
+			<td th:text="|密码：${emp.userpswd}...|">3</td>
+			<td th:text="${emp.username}">4</td>
+			<td th:text="${emp.email}==null?'没有获取到邮箱':'获取到了邮箱：'+${emp.email}">5</td>
+		</tr>
+	</table>
+	</div>
+	<div th:if="${session.merber}==null">
+		没有获取到实例
+	</div>
+	<a href="text">点我</a>
+	
+</body>
+</html>

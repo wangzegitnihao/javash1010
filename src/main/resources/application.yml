@@ -1,0 +1,49 @@
+ # 指定应用
+spring:
+  application:
+    name: scw-webui
+
+#    filters: stat
+
+# 配置redis的连接地址+端口号
+  redis:
+    host: 192.168.192.129
+    port: 6379
+  session:
+    timeout: 1800
+    store-type: redis
+
+  thymeleaf:
+    prefix: classpath:/templates/
+    suffix: .html
+    cache: false
+    #禁用thymeleaf缓存【项目再生产环境部署时需要修改为true】
+ 
+ 
+feign:
+  hystrix:
+    enabled: true
+     #启用feign对hystrix的支持熔断保护
+  httpclient:
+    connection-timeout: 5000
+     #远程调用连接超时时间
+#注册到注册中心的地址
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8762/eureka/
+  instance:
+    prefer-ip-address: true
+    ip-address: 192.168.192.1
+# 指定端口号
+server:
+  port: 8885
+# 日志的配置
+logging:
+  level:
+    root: warn
+    com.atguigu.scw: debug
+  file: D:/zb/scw-191010.txt
+
+
+  
